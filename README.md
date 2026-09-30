@@ -1,1 +1,1 @@
-# shanjitong
+部署公网服务后，把 MainActivity.kt 里的 WEBSITE_URL 替换为你的 Render/域名地址，然后 Android Studio Build APK。
