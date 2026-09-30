@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: shanjitong-ai
+    runtime: node
+    region: singapore
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-5.6-luna
+      - key: AI_SYSTEM_PROMPT
+        value: 你是善鸡通 AI，一个友好、准确、简洁的中文 AI 助手。

@@ -1,36 +1,44 @@
-<!doctype html><html lang="zh-CN"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="shanjitong 企业官网"><title>shanjitong · Windows 风格企业官网</title>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f4f7fb">
+<title>善鸡通 AI</title>
 <style>
-:root{--bg:#eef5fc;--panel:rgba(255,255,255,.68);--text:#172033;--muted:#667085;--line:rgba(20,45,80,.12);--accent:#0067c0;--shadow:0 18px 55px rgba(27,55,90,.16)}
-.dark{--bg:#0e141c;--panel:rgba(25,33,44,.76);--text:#f5f7fb;--muted:#aeb8c7;--line:rgba(255,255,255,.1);--shadow:0 18px 55px rgba(0,0,0,.45)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Segoe UI","Microsoft YaHei",sans-serif;color:var(--text);background:radial-gradient(circle at 15% 10%,#fff,transparent 28%),linear-gradient(135deg,#eaf4ff,#f7f9fc 55%,#e5f2ff);min-height:100vh}.dark{background:radial-gradient(circle at 15% 10%,#1d354b,transparent 30%),linear-gradient(135deg,#0b1017,#161d27)}
-a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}.glass{background:var(--panel);border:1px solid var(--line);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:var(--shadow)}
-main{max-width:1200px;margin:auto;padding:28px 5vw 110px}.hero{min-height:78vh;display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center}.panel{padding:36px;border-radius:22px}.badge{color:var(--accent);font-weight:700}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#20c779;margin-right:8px}h1{font-size:clamp(58px,9vw,110px);letter-spacing:-.07em;line-height:.9;margin:20px 0}h2{font-size:clamp(26px,4vw,42px)}p{line-height:1.8;color:var(--muted)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.btn{border:0;border-radius:12px;padding:13px 18px;cursor:pointer}.primary{background:var(--accent);color:#fff}.secondary{background:rgba(255,255,255,.5);border:1px solid var(--line)}
-section{margin-top:75px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{border-radius:18px;padding:23px}.card h3{margin:5px 0 8px}.icon{font-size:28px;color:var(--accent)}
-.news{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.news-card{overflow:hidden;border-radius:18px}.news-card img{width:100%;height:170px;object-fit:cover}.news-card .body{padding:18px}.news-card h3{margin:0 0 8px}.date{font-size:12px;color:var(--muted)}
-.taskbar{position:fixed;z-index:20;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:7px;padding:7px;border-radius:17px;min-width:min(94vw,520px);justify-content:center}.taskbar button,.taskbar a{width:44px;height:44px;border:0;border-radius:11px;display:grid;place-items:center;background:transparent;color:var(--text);font-size:20px}.taskbar button:hover,.taskbar a:hover{background:rgba(0,103,192,.12)}
-.start{position:fixed;z-index:19;left:50%;bottom:76px;transform:translateX(-50%) scale(.98);width:min(92vw,540px);padding:20px;border-radius:22px;opacity:0;pointer-events:none;transition:.18s}.start.open{opacity:1;pointer-events:auto;transform:translateX(-50%) scale(1)}.start input{width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.45);color:var(--text)}.apps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.apps a,.apps button{padding:15px;border:0;border-radius:12px;background:transparent;color:var(--text);cursor:pointer}.apps a:hover,.apps button:hover{background:rgba(0,103,192,.1)}
-.modal{position:fixed;inset:0;background:rgba(5,10,18,.55);z-index:30;display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modalbox{width:min(900px,100%);max-height:90vh;overflow:auto;border-radius:20px;padding:25px}.modalbox img{max-width:100%;max-height:300px;object-fit:contain}.close{float:right}
-@media(max-width:800px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:30px}.grid,.news{grid-template-columns:1fr}.panel{padding:25px}h1{font-size:62px}section{margin-top:55px}.news-card img{height:190px}}
-</style></head><body>
-<main><div class="hero">
-<section class="glass panel"><div class="badge"><span class="dot"></span>SHANJITONG · DIGITAL COMPANY</div><h1>shanjitong</h1><h2>让科技，成为连接未来的窗口。</h2><p>数字化产品、智能技术与企业服务。以 Windows 11 风格的现代界面，呈现一个真正可运营的企业官网。</p><div class="actions"><a class="btn primary" href="#news">查看新闻</a><a class="btn secondary" href="#contact">联系企业</a></div></section>
-<section class="glass panel"><h3>shanjitong.exe</h3><div style="height:190px;border-radius:50%;width:190px;margin:20px auto;background:conic-gradient(#0067c0,#50c8ff,#8f7cff,#0067c0);display:grid;place-items:center"><div style="width:135px;height:135px;border-radius:50%;background:var(--panel)"></div></div><p>Digital Experience<br>Technology<br>Business Service</p></section>
-</div>
-<section id="services"><h2>我们的服务</h2><div class="grid"><article class="glass card"><div class="icon">⌘</div><h3>数字化解决方案</h3><p>企业网站、业务平台与数字化流程。</p></article><article class="glass card"><div class="icon">◈</div><h3>软件与网站</h3><p>现代 Web 应用、企业系统与移动端体验。</p></article><article class="glass card"><div class="icon">✦</div><h3>智能技术</h3><p>AI、自动化与数据能力。</p></article></div></section>
-<section id="news"><h2>新闻中心</h2><div id="newsList" class="news"><div class="glass card">正在加载新闻…</div></div></section>
-<section id="contact"><h2>联系企业</h2><div class="glass panel"><p>欢迎咨询企业官网、软件开发、数字化服务及智能技术项目。</p><p>✉ hello@shanjitong.com</p><a class="btn primary" href="/admin">进入新闻后台</a></div></section>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;color:#182230;background:#eef3f9}button,textarea{font:inherit}.app{height:100dvh;display:flex;overflow:hidden;background:linear-gradient(135deg,#e9eff7,#f9fbfe)}
+.sidebar{width:260px;padding:18px;border-right:1px solid #d7e0eb;background:rgba(255,255,255,.72);backdrop-filter:blur(20px);flex:none}.brand{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:700;margin:3px 4px 18px}.logo{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:#fff;border:1px solid #d6dfeb;box-shadow:0 5px 18px #aab7c933}.new{width:100%;border:1px solid #c6d3e3;background:#fff;border-radius:11px;padding:11px 14px;cursor:pointer;text-align:left}.side-note{color:#64748b;font-size:13px;line-height:1.7;margin:18px 5px}.main{min-width:0;flex:1;display:flex;flex-direction:column}.topbar{height:60px;display:flex;align-items:center;padding:0 24px;border-bottom:1px solid #d9e2ec;background:#ffffff99;backdrop-filter:blur(18px);font-weight:600}.status{margin-left:auto;font-size:12px;color:#64748b;display:flex;align-items:center;gap:6px}.dot{width:7px;height:7px;border-radius:50%;background:#94a3b8}.dot.ok{background:#22a06b}.chat{flex:1;overflow:auto;padding:30px clamp(16px,8vw,110px)}.welcome{text-align:center;margin:12vh auto 35px;max-width:680px}.welcome .hero{font-size:46px;margin:0 0 12px}.welcome h1{font-size:34px;margin:0 0 12px}.welcome p{color:#64748b;margin:0}.suggestions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}.suggestions button{background:#fff;border:1px solid #d5dfeb;border-radius:10px;padding:9px 12px;color:#334155;cursor:pointer}.msg{display:flex;margin:18px 0}.msg.user{justify-content:flex-end}.bubble{max-width:min(820px,90%);padding:13px 16px;border-radius:15px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere;box-shadow:0 2px 10px #71809612}.ai .bubble{background:#fff;border:1px solid #dbe4ee}.user .bubble{background:#1677ff;color:#fff}.composer{padding:12px clamp(14px,8vw,110px) 22px;background:linear-gradient(transparent,#eef3f9 28%)}.box{display:flex;gap:9px;align-items:flex-end;background:#fff;border:1px solid #bccbdd;border-radius:15px;padding:8px;box-shadow:0 8px 30px #61738c18}.box textarea{flex:1;min-height:46px;max-height:150px;border:0;outline:0;resize:none;padding:10px 9px;background:transparent}.send{height:46px;border:0;border-radius:11px;background:#1677ff;color:#fff;padding:0 18px;cursor:pointer}.send:disabled{opacity:.55;cursor:wait}.hint{text-align:center;font-size:11px;color:#94a3b8;margin-top:7px}@media(max-width:700px){.sidebar{display:none}.topbar{padding:0 16px}.chat{padding:18px 14px}.composer{padding:10px 12px 15px}.welcome{margin:10vh auto 25px}.welcome .hero{font-size:40px}.welcome h1{font-size:27px}.bubble{max-width:94%}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><span class="logo">🧠</span><span>善鸡通 AI</span></div>
+  <button class="new" id="newChat">＋ 新对话</button>
+  <div class="side-note">你的专属 AI 助手<br>Web 1.0 · 手机优先<br><br>AI API 密钥只保存在服务器端，不放在网页代码里。</div>
+</aside>
+<main class="main">
+  <header class="topbar">善鸡通 AI <span class="status"><i class="dot" id="dot"></i><span id="statusText">检查服务中…</span></span></header>
+  <section class="chat" id="chat">
+    <div class="welcome" id="welcome">
+      <div class="hero">🧠</div><h1>你好，我是善鸡通 AI</h1>
+      <p>聊天、写作、总结、翻译，都可以从这里开始。</p>
+      <div class="suggestions"><button>帮我写一段介绍</button><button>帮我总结一篇文章</button><button>解释一个问题</button></div>
+    </div>
+  </section>
+  <footer class="composer"><div class="box"><textarea id="input" rows="1" placeholder="输入你的问题…"></textarea><button class="send" id="send">发送</button></div><div class="hint">善鸡通 AI 1.0 · AI 回答可能存在错误，请自行核实重要信息</div></footer>
 </main>
-<div class="start glass" id="start"><input id="search" placeholder="搜索服务、新闻或页面"><div class="apps"><a href="#services">◈ 服务</a><a href="#news">📰 新闻</a><a href="#contact">✉ 联系</a><button id="theme">☾ 夜间模式</button><a href="/admin">⚙ 管理后台</a></div></div>
-<nav class="taskbar glass"><button id="startBtn">⊞</button><a href="#services">◈</a><a href="#news">📰</a><a href="#contact">✉</a><button id="theme2">☾</button></nav>
-<div class="modal" id="modal"><div class="modalbox glass"><button class="btn secondary close" id="close">关闭</button><div id="article"></div></div></div>
+</div>
 <script>
-const $=s=>document.querySelector(s), start=$("#start");
-$("#startBtn").onclick=()=>start.classList.toggle("open");document.addEventListener("click",e=>{if(!start.contains(e.target)&&!e.target.closest("#startBtn"))start.classList.remove("open")});
-function theme(){document.body.classList.toggle("dark");localStorage.theme=document.body.classList.contains("dark")?"dark":"light"}$("#theme").onclick=theme;$("#theme2").onclick=theme;if(localStorage.theme==="dark")document.body.classList.add("dark");
-async function loadNews(){const r=await fetch("/api/news");const a=await r.json();$("#newsList").innerHTML=a.length?a.map(n=>`<article class="glass news-card">${n.image?`<img src="${n.image}" alt="">`:``}<div class="body"><div class="date">${new Date(n.created_at).toLocaleString("zh-CN")}</div><h3>${esc(n.title)}</h3><p>${esc(n.summary||"")}</p><button class="btn primary" onclick="openArticle(${n.id})">阅读全文</button></div></article>`).join(""):`<div class="glass card">暂无已发布新闻</div>`}
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]))}
-async function openArticle(id){const n=await (await fetch("/api/news/"+id)).json();$("#article").innerHTML=`${n.image?`<img src="${n.image}" alt="">`:``}<h1 style="font-size:42px">${esc(n.title)}</h1><div class="date">${new Date(n.created_at).toLocaleString("zh-CN")}</div><div style="white-space:pre-wrap;line-height:1.9">${esc(n.content)}</div>`;$("#modal").classList.add("open")}
-$("#close").onclick=()=>$("#modal").classList.remove("open");loadNews();
-</script></body></html>
+const chat=document.getElementById('chat'),input=document.getElementById('input'),sendBtn=document.getElementById('send');
+const dot=document.getElementById('dot'),statusText=document.getElementById('statusText');
+let messages=[];
+function add(role,text){document.getElementById('welcome')?.remove();const row=document.createElement('div');row.className='msg '+role;const b=document.createElement('div');b.className='bubble';b.textContent=text;row.appendChild(b);chat.appendChild(row);chat.scrollTop=chat.scrollHeight;return b}
+function reset(){messages=[];chat.innerHTML='<div class="welcome" id="welcome"><div class="hero">🧠</div><h1>你好，我是善鸡通 AI</h1><p>新的对话已经准备好了。</p></div>';input.focus()}
+async function ask(text){input.value='';add('user',text);messages.push({role:'user',content:text});sendBtn.disabled=true;const thinking=add('ai','正在思考…');try{const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages})});const d=await r.json();if(!r.ok)throw new Error(d.error||'请求失败');thinking.textContent=d.reply||'AI 没有返回内容。';messages.push({role:'assistant',content:d.reply||''});}catch(e){thinking.textContent='连接失败：'+e.message;}finally{sendBtn.disabled=false;input.focus()}}
+function send(){const t=input.value.trim();if(t&&!sendBtn.disabled)ask(t)}
+sendBtn.onclick=send;document.getElementById('newChat').onclick=reset;input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}});input.addEventListener('input',()=>{input.style.height='auto';input.style.height=Math.min(input.scrollHeight,150)+'px'});document.querySelectorAll('.suggestions button').forEach(b=>b.onclick=()=>ask(b.textContent));
+fetch('/api/health').then(r=>r.json()).then(d=>{dot.classList.toggle('ok',d.aiConfigured);statusText.textContent=d.aiConfigured?'AI 已连接':'等待配置 AI'}).catch(()=>{statusText.textContent='服务异常'});
+</script>
+</body>
+</html>
