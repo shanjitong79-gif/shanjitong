@@ -1,43 +1,62 @@
-进口 表达从……起"快速";
-进口 CORS从...起"Cors";
+import express from "express";
+import cors from "cors";
 
-Const应用程序=表达();
-Const港口=数量(过程.env.港口||3000);
-ConstOpenAI_API_KEY=过程.env.OpenAI_API_KEY||"";
-ConstOpenAI_MODEL=过程.env.OpenAI_MODEL||"gpt-5.6-月";
-Constsystem_PROMPT=
-  过程.env.AI_SYSTEM_PROMPT||
-  "你是善鸡通AI，一个友好、准确、简洁的中文AI助手.回答问题时尽量直接、有条理；不确定时明确说明。";
+const app = express();
 
-应用程序.禁用("X-Power-by");
-应用程序.使用(CORS({ 起源: 正确 }));
-应用程序.使用(表达.JSON({ 限制: "1mb" }));
-应用程序.使用(表达.静态的(".", { 扩展: ["html"] }));
+const PORT = Number(process.env.PORT || 3000);
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "";
+const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-5.6-luna";
 
-应用程序.得到("/{*splat}", (_req, res)=>{
-  res.JSON({
-    好的: 正确,
-    姓名: "善鸡通AI",
-    版本: "1.0.0",
-    aiConfigured: 布尔型(OpenAI_API_KEY)
+const SYSTEM_PROMPT =
+  process.env.AI_SYSTEM_PROMPT ||
+  "你是善鸡通 AI，一个友好、准确、简洁的中文 AI 助手。回答问题时尽量直接、有条理；不确定时明确说明。";
+
+app.disable("x-powered-by");
+
+app.use(cors({ origin: true }));
+
+app.use(express.json({ limit: "1mb" }));
+
+app.use(express.static(".", { extensions: ["html"] }));
+
+// 健康检查
+app.get("/api/health", (_req, res) => {
+  res.json({
+    ok: true,
+    name: "善鸡通 AI",
+    version: "1.0.0",
+    aiConfigured: Boolean(OPENAI_API_KEY)
   });
 });
 
-功能extractText(数据) {
-  如果 (typeof 数据?.输出文本(_T)==="字符串" && 数据.输出文本(_T).修剪()) {
-    返回 数据.输出文本(_T).修剪();
+// 提取 OpenAI Responses API 返回的文本
+function extractText(data) {
+  if (
+    typeof data?.output_text === "string" &&
+    data.output_text.trim()
+  ) {
+    return data.output_text.trim();
   }
-  Const部分=[];
-  为 (Const项……的数据?.输出||[]) {
-    为 (Const内容……的项?.内容||[]) {
-      如果 (typeof 内容?.文本==="字符串") 部分.推(内容.文本);
+
+  const parts = [];
+
+  for (const item of data?.output || []) {
+    for (const content of item?.content || []) {
+      if (typeof content?.text === "string") {
+        parts.push(content.text);
+      }
     }
   }
-  返回 部分.参与("\n").修剪();
+
+  return parts.join("\n").trim();
 }
 
+// AI 对话接口
 app.post("/api/chat", async (req, res) => {
-  const incoming = Array.isArray(req.body?.messages) ? req.body.messages : [];
+  const incoming = Array.isArray(req.body?.messages)
+    ? req.body.messages
+    : [];
+
   const messages = incoming
     .filter(
       (m) =>
@@ -52,65 +71,99 @@ app.post("/api/chat", async (req, res) => {
     }));
 
   if (!messages.length) {
-    return res.status(400).json({ error: "请输入消息。" });
+    return res.status(400).json({
+      error: "请输入消息。"
+    });
   }
+
   if (messages[messages.length - 1].role !== "user") {
-    return res.status(400).json({ error: "最后一条消息必须来自用户。" });
+    return res.status(400).json({
+      error: "最后一条消息必须来自用户。"
+    });
   }
+
   if (!OPENAI_API_KEY) {
     return res.status(503).json({
-      error: "AI 尚未配置。请在 Render 环境变量中设置 OPENAI_API_KEY。"
+      error:
+        "AI 尚未配置。请在 Render 环境变量中设置 OPENAI_API_KEY。"
     });
   }
 
   try {
-    const upstream = await fetch("https://api.openai.com/v1/responses", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${OPENAI_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: OPENAI_MODEL,
-        input: [
-          { role: "system", content: SYSTEM_PROMPT },
-          ...messages
-        ]
-      })
-    });
+    const upstream = await fetch(
+      "https://api.openai.com/v1/responses",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${OPENAI_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: OPENAI_MODEL,
+          input: [
+            {
+              role: "system",
+              content: SYSTEM_PROMPT
+            },
+            ...messages
+          ]
+        })
+      }
+    );
 
     const raw = await upstream.text();
+
     let data = {};
+
     try {
       data = JSON.parse(raw);
-    } catch {}
+    } catch {
+      // OpenAI 返回的内容不是 JSON 时保持空对象
+    }
 
     if (!upstream.ok) {
       const detail =
         data?.error?.message ||
         data?.message ||
         `OpenAI 返回 HTTP ${upstream.status}`;
-      return res.status(502).json({ error: detail });
+
+      return res.status(502).json({
+        error: detail
+      });
     }
 
     const reply = extractText(data);
+
     if (!reply) {
-      return res.status(502).json({ error: "AI 没有返回有效内容。" });
+      return res.status(502).json({
+        error: "AI 没有返回有效内容。"
+      });
     }
 
-    return res.json({ reply });
+    return res.json({
+      reply
+    });
   } catch (error) {
-    console.error("OpenAI request failed:", error?.message || error);
+    console.error(
+      "OpenAI request failed:",
+      error?.message || error
+    );
+
     return res.status(502).json({
-      error: "无法连接 OpenAI，请检查服务器网络和 API Key。"
+      error:
+        "无法连接 OpenAI，请检查服务器网络和 API Key。"
     });
   }
 });
 
-app.get("*", (_req, res) => {
+// Express 5 正确的通配路由写法
+app.get("/{*splat}", (_req, res) => {
   res.sendFile(process.cwd() + "/index.html");
 });
 
+// 启动服务器
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`善鸡通 AI listening on port ${PORT}`);
+  console.log(
+    `善鸡通 AI listening on port ${PORT}`
+  );
 });
